@@ -11,11 +11,13 @@ Just a Docker image which:
 Tested with ffplay and VLC
 
 Streams served in: rtsp://localhost:8554/*
+
 Website served in: http:localhost:8080
 
 # Build and run
 
 docker build -t pre-encoded-rtsp .
+
 docker run -d -p 8554:8554 -p 8080:8080 --name rtsp-server pre-encoded-rtsp
 
 # Monitor encoding progress
@@ -34,6 +36,7 @@ docker logs -f rtsp-server
 # Test streams (after encoding completes)
 
 ffplay rtsp://localhost:8554/h264_hq
+
 gst-launch-1.0 playbin uri=rtsp://localhost:8554/h264_lowlatency
 
 # Website
